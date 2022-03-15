@@ -13,6 +13,8 @@
 		BDF76D6127E0240A0004C3EB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D4F27E024090004C3EB /* ContentView.swift */; };
 		BDF76D6227E0240A0004C3EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF76D5027E0240A0004C3EB /* Assets.xcassets */; };
 		BDF76D6327E0240A0004C3EB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDF76D5027E0240A0004C3EB /* Assets.xcassets */; };
+		BDF76D6D27E024E70004C3EB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D6C27E024E70004C3EB /* WelcomeView.swift */; };
+		BDF76D6E27E024E70004C3EB /* WelcomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D6C27E024E70004C3EB /* WelcomeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +24,7 @@
 		BDF76D5527E0240A0004C3EB /* mealplan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mealplan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF76D5B27E0240A0004C3EB /* mealplan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = mealplan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		BDF76D5D27E0240A0004C3EB /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		BDF76D6C27E024E70004C3EB /* WelcomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -55,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				BDF76D4E27E024090004C3EB /* mealplanApp.swift */,
+				BDF76D6C27E024E70004C3EB /* WelcomeView.swift */,
 				BDF76D4F27E024090004C3EB /* ContentView.swift */,
 				BDF76D5027E0240A0004C3EB /* Assets.xcassets */,
 			);
@@ -177,6 +181,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDF76D6027E0240A0004C3EB /* ContentView.swift in Sources */,
+				BDF76D6D27E024E70004C3EB /* WelcomeView.swift in Sources */,
 				BDF76D5E27E0240A0004C3EB /* mealplanApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,6 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BDF76D6127E0240A0004C3EB /* ContentView.swift in Sources */,
+				BDF76D6E27E024E70004C3EB /* WelcomeView.swift in Sources */,
 				BDF76D5F27E0240A0004C3EB /* mealplanApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

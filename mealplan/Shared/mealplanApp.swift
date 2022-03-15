@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct mealplanApp: App {
+    
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationView {
+                WelcomeView()
+            }
         }
     }
 }
