@@ -25,8 +25,6 @@
 		BDF76D7A27E042420004C3EB /* Welcome_Goals.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D7827E042420004C3EB /* Welcome_Goals.swift */; };
 		BDF76D7D27E044030004C3EB /* Welcome_PersonalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D7C27E044030004C3EB /* Welcome_PersonalDetails.swift */; };
 		BDF76D7E27E044030004C3EB /* Welcome_PersonalDetails.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D7C27E044030004C3EB /* Welcome_PersonalDetails.swift */; };
-		BDF76D8027E04B2B0004C3EB /* Welcome_Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D7F27E04B2B0004C3EB /* Welcome_Success.swift */; };
-		BDF76D8127E04B2B0004C3EB /* Welcome_Success.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDF76D7F27E04B2B0004C3EB /* Welcome_Success.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,7 +40,6 @@
 		BDF76D7527E042310004C3EB /* Welcome_Allergens.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome_Allergens.swift; sourceTree = "<group>"; };
 		BDF76D7827E042420004C3EB /* Welcome_Goals.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome_Goals.swift; sourceTree = "<group>"; };
 		BDF76D7C27E044030004C3EB /* Welcome_PersonalDetails.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome_PersonalDetails.swift; sourceTree = "<group>"; };
-		BDF76D7F27E04B2B0004C3EB /* Welcome_Success.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Welcome_Success.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,7 +101,6 @@
 			isa = PBXGroup;
 			children = (
 				BDF76D6C27E024E70004C3EB /* WelcomeView.swift */,
-				BDF76D7F27E04B2B0004C3EB /* Welcome_Success.swift */,
 				BDF76D7827E042420004C3EB /* Welcome_Goals.swift */,
 				BDF76D7527E042310004C3EB /* Welcome_Allergens.swift */,
 				BDF76D7227E042290004C3EB /* Welcome_Body.swift */,
@@ -220,7 +216,6 @@
 				BDF76D7D27E044030004C3EB /* Welcome_PersonalDetails.swift in Sources */,
 				BDF76D7627E042310004C3EB /* Welcome_Allergens.swift in Sources */,
 				BDF76D7027E042160004C3EB /* Welcome_Account.swift in Sources */,
-				BDF76D8027E04B2B0004C3EB /* Welcome_Success.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +231,6 @@
 				BDF76D7E27E044030004C3EB /* Welcome_PersonalDetails.swift in Sources */,
 				BDF76D7727E042310004C3EB /* Welcome_Allergens.swift in Sources */,
 				BDF76D7127E042160004C3EB /* Welcome_Account.swift in Sources */,
-				BDF76D8127E04B2B0004C3EB /* Welcome_Success.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

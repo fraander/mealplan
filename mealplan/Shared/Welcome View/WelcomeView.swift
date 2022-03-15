@@ -8,7 +8,7 @@
 import SwiftUI
 
 enum WelcomePage {
-    case account, personalDetails, body, allergens, goals, success
+    case account, personalDetails, body, allergens, goals
 }
 
 struct WelcomeView: View {
@@ -23,16 +23,18 @@ struct WelcomeView: View {
             TabView(selection: $page) {
                 Welcome_Account(currentPage: $page)
                     .tag(WelcomePage.account)
+                
                 Welcome_PersonalDetails(currentPage: $page)
                     .tag(WelcomePage.personalDetails)
+                
                 Welcome_Body(currentPage: $page)
                     .tag(WelcomePage.body)
-                Welcome_Allergens()
+                
+                Welcome_Allergens(currentPage: $page)
                     .tag(WelcomePage.allergens)
-                Welcome_Goals()
+               
+                Welcome_Goals(currentPage: $page)
                     .tag(WelcomePage.goals)
-                Welcome_Success()
-                    .tag(WelcomePage.success)
             }
             .tabViewStyle(.page(indexDisplayMode: .never))
             .padding(.bottom)

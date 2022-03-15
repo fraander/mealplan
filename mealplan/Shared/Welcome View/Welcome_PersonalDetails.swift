@@ -50,7 +50,7 @@ struct Welcome_PersonalDetails: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    Image("Wireframe_Standing_Background")
+                    Image("home_sitting")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)

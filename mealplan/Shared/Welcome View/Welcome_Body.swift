@@ -10,7 +10,7 @@ import SwiftUI
 struct Welcome_Body: View {
     
     enum Field {
-        case name, email
+        case feet, inches, lbs
     }
     
     @Binding var currentPage: WelcomePage
@@ -33,7 +33,7 @@ struct Welcome_Body: View {
             
             ScrollView {
                 VStack(spacing: 16) {
-                    Image("Wireframe_Standing_Background")
+                    Image("whiteboard_walking")
                         .resizable()
                         .aspectRatio(contentMode: .fit)
                         .frame(width: 200, height: 200)
@@ -54,13 +54,24 @@ struct Welcome_Body: View {
                                 format: .number
                             )
                                 .keyboardType(.numberPad)
+                                .submitLabel(.next)
+                                .onSubmit {
+                                    focusedField = .inches
+                                }
+                                .focused($focusedField, equals: .feet)
                                 .frame(width: 60)
+                            
                             TextField(
                                 "in.",
                                 value: $heightInches,
                                 format: .number
                             )
                                 .keyboardType(.numberPad)
+                                .submitLabel(.next)
+                                .onSubmit {
+                                    focusedField = .lbs
+                                }
+                                .focused($focusedField, equals: .inches)
                                 .frame(width: 60)
                         }
                         .padding(10)
@@ -76,11 +87,13 @@ struct Welcome_Body: View {
                             Spacer()
                             
                             TextField(
-                                "lbs.",
+                                "",
                                 value: $weight,
                                 format: .number
                             )
                                 .keyboardType(.numberPad)
+                                .submitLabel(.done)
+                                .focused($focusedField, equals: .lbs)
                                 .frame(width: 60)
                         }
                         .padding(10)
@@ -93,7 +106,7 @@ struct Welcome_Body: View {
                     
                     Button {
                         withAnimation {
-                            currentPage = .body
+                            currentPage = .allergens
                         }
                     } label: {
                         Text("Next Page")

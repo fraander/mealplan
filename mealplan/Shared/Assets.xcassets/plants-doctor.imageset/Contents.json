@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "plants-doctor.svg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}
