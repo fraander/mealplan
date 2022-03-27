@@ -34,13 +34,10 @@ struct Welcome_Allergens: View {
                         .frame(width: 200, height: 200)
                         .padding(.top, 100)
                     
-                    Text("Allergens")
+                    Text("Dietary Restrictions")
                         .font(.system(.headline, design: .rounded))
                     
-                    VStack(spacing: 8) {
-                        Text("Pickers")
-                    }
-                    .padding(.horizontal)
+                    FilterView(defaultTextColor: .primary, selectionBackgroundColor: Color(red: 0.639, green: 0.702, blue: 0.400, opacity: 1.000))
                     
                     Button {
                         withAnimation {
@@ -54,10 +51,12 @@ struct Welcome_Allergens: View {
                     .tint(Color(red: 0.639, green: 0.702, blue: 0.400, opacity: 1.000))
                     .disabled(preventNextPage)
                     
+                    Spacer()
+                    
                 }
             }
         }
-        .padding(.bottom)
+//        .padding(.bottom)
         .padding(.horizontal)
         .padding(.horizontal)
     }

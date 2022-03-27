@@ -55,7 +55,7 @@ struct Welcome_Goals: View {
                 }
             }
         }
-        .padding(.bottom)
+//        .padding(.bottom)
         .padding(.horizontal)
         .padding(.horizontal)
     }

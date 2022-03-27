@@ -22,7 +22,7 @@ struct Welcome_Body: View {
     @State private var weight: Int? = nil
     
     var preventNextPage: Bool {
-        return false
+        return !(heightFeet != nil && heightInches != nil && weight ?? 1001 < 1000)
     }
     
     var body: some View {
@@ -48,31 +48,43 @@ struct Welcome_Body: View {
                             
                             Spacer()
                             
-                            TextField(
-                                "ft.",
-                                value: $heightFeet,
-                                format: .number
-                            )
-                                .keyboardType(.numberPad)
-                                .submitLabel(.next)
-                                .onSubmit {
-                                    focusedField = .inches
+                            ZStack {
+                                if heightFeet != nil && heightFeet != 0 {
+                                    Text("\(heightFeet ?? 0)").foregroundColor(.clear) + Text("ft.")
                                 }
-                                .focused($focusedField, equals: .feet)
-                                .frame(width: 60)
+                                
+                                TextField(
+                                    "ft.",
+                                    value: $heightFeet,
+                                    format: .number
+                                )
+                                    .keyboardType(.numberPad)
+                                    .submitLabel(.next)
+                                    .onSubmit {
+                                        focusedField = .inches
+                                    }
+                                    .focused($focusedField, equals: .feet)
+                                    .frame(width: 40)
+                            }
                             
-                            TextField(
-                                "in.",
-                                value: $heightInches,
-                                format: .number
-                            )
-                                .keyboardType(.numberPad)
-                                .submitLabel(.next)
-                                .onSubmit {
-                                    focusedField = .lbs
+                            ZStack {
+                                if heightInches != nil && heightInches != 0 {
+                                    Text("\(heightInches ?? 0)").foregroundColor(.clear) + Text("in.")
                                 }
-                                .focused($focusedField, equals: .inches)
-                                .frame(width: 60)
+                                
+                                TextField(
+                                    "in.",
+                                    value: $heightInches,
+                                    format: .number
+                                )
+                                    .keyboardType(.numberPad)
+                                    .submitLabel(.next)
+                                    .onSubmit {
+                                        focusedField = .lbs
+                                    }
+                                    .focused($focusedField, equals: .inches)
+                                    .frame(width: 60)
+                            }
                         }
                         .padding(10)
                         .background(
@@ -86,15 +98,21 @@ struct Welcome_Body: View {
                             
                             Spacer()
                             
-                            TextField(
-                                "",
-                                value: $weight,
-                                format: .number
-                            )
-                                .keyboardType(.numberPad)
-                                .submitLabel(.done)
-                                .focused($focusedField, equals: .lbs)
-                                .frame(width: 60)
+                            ZStack {
+                                if weight != nil && weight != 0 {
+                                    Text("\(weight ?? 0)").foregroundColor(.clear) + Text("lbs.")
+                                }
+                                
+                                TextField(
+                                    "lbs.",
+                                    value: $weight,
+                                    format: .number
+                                )
+                                    .keyboardType(.numberPad)
+                                    .submitLabel(.done)
+                                    .focused($focusedField, equals: .lbs)
+                                    .frame(width: 70)
+                            }
                         }
                         .padding(10)
                         .background(
@@ -119,7 +137,7 @@ struct Welcome_Body: View {
                 }
             }
         }
-        .padding(.bottom)
+        //        .padding(.bottom)
         .padding(.horizontal)
         .padding(.horizontal)
     }

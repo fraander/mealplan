@@ -108,7 +108,7 @@ struct Welcome_PersonalDetails: View {
                 }
             }
         }
-        .padding(.bottom)
+//        .padding(.bottom)
         .padding(.horizontal)
         .padding(.horizontal)
     }

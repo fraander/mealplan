@@ -36,8 +36,16 @@ struct WelcomeView: View {
                 Welcome_Goals(currentPage: $page)
                     .tag(WelcomePage.goals)
             }
-            .tabViewStyle(.page(indexDisplayMode: .never))
+            .tabViewStyle(.page(indexDisplayMode: page != .allergens ? .always : .never))
             .padding(.bottom)
+            
+            // TODO: proper weight text field labels
+            // TODO: Full field validation
+            // TODO: Tint color on pickers (date, menu)
+            // TODO: handle keyboard
+            // TODO: Refactor
+            // TODO: Goals to pick from
+            // TODO: Success page (confetti?)
         }
     }
 }
