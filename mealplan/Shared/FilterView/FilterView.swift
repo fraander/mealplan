@@ -7,30 +7,8 @@
 
 import SwiftUI
 
-struct FilterOption: Identifiable, Hashable {
-    var id = UUID()
-    let title: String
-    var chosen = false
-}
-
-struct Ingredient{
-    var id = UUID()
-    var name: String
-    var isSelected: Bool = false
-}
-
 struct FilterView: View {
-    let items = [
-        FilterOption(title: "Nut Free"),
-        FilterOption(title: "Gluten Free"),
-        FilterOption(title: "Vegetarian"),
-        FilterOption(title: "Vegan"),
-        FilterOption(title: "Pescatarian"),
-        FilterOption(title: "Shellfish Free"),
-        FilterOption(title: "Kosher"),
-        FilterOption(title: "Halal"),
-        FilterOption(title: "Lactose Free")
-    ]
+    let items = FilterOption.options
     
     var defaultTextColor = Color(red: 0.939, green: 0.963, blue: 0.963, opacity: 1.000)
     var selectionTextColor = Color.white

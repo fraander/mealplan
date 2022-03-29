@@ -43,7 +43,7 @@ struct Welcome_Goals: View {
                     .padding(.horizontal)
                     
                     Button {
-                        // TODO: open up the home page
+                        currentPage = .dashboard
                     } label: {
                         Text("Next Page")
                             .font(.system(.headline, design: .rounded))

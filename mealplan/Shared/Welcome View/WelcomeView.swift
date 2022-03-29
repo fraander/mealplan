@@ -8,12 +8,12 @@
 import SwiftUI
 
 enum WelcomePage {
-    case account, personalDetails, body, allergens, goals
+    case account, personalDetails, body, allergens, goals, dashboard
 }
 
 struct WelcomeView: View {
     
-    @State private var page: WelcomePage = .account
+    @Binding var page: WelcomePage
     
     var body: some View {
         ZStack {
@@ -39,7 +39,6 @@ struct WelcomeView: View {
             .tabViewStyle(.page(indexDisplayMode: page != .allergens ? .always : .never))
             .padding(.bottom)
             
-            // TODO: proper weight text field labels
             // TODO: Full field validation
             // TODO: Tint color on pickers (date, menu)
             // TODO: handle keyboard
@@ -52,6 +51,6 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView()
+        WelcomeView(page: .constant(.account))
     }
 }

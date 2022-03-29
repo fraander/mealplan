@@ -7,18 +7,11 @@
 
 import SwiftUI
 
-struct Recipe: Identifiable {
-    var id = UUID()
-    var title = "My Recipe"
-}
-
 struct DashboardView: View {
     
     @State var showFilterView = false
     @State var filterItems = Set<FilterOption>()
-    
-    @State var recipes = [Recipe(), Recipe(), Recipe()]
-    
+        
     var body: some View {
         ZStack {
             Color(red: 0.839, green: 0.863, blue: 0.863, opacity: 1.000)
@@ -37,7 +30,7 @@ struct DashboardView: View {
                             .padding(10)
                             .background {
                                 Circle()
-                                    .fill(Color(red: 0.275, green: 0.455, blue: 0.380, opacity: 1.000))
+                                    .fill(Color(red: 0.475, green: 0.655, blue: 0.580, opacity: 1.000))
                             }
                             .padding(.horizontal)
                     }
@@ -53,11 +46,19 @@ struct DashboardView: View {
                     Spacer()
                 } // header
                 
-                List(recipes) { recipe in
-                    Text(recipe.title)
-                        .listRowSeparator(.hidden)
+                List(Recipes.recipes) { recipe in
+                    NavigationLink {
+                        RecipeView(recipe: recipe)
+                    } label: {
+                        VStack(alignment: .leading) {
+                            Text(recipe.title)
+                                .font(.system(.body, design: .rounded))
+                            Text(recipe.allergen.title)
+                                .font(.system(.caption, design: .rounded))
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
-                .listStyle(.plain)
             }
             .sheet(isPresented: $showFilterView) {
                 ZStack {
