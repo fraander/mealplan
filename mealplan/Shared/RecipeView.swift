@@ -19,7 +19,7 @@ struct RecipeView: View {
                     .bold()
                 Text(recipe.allergen.title)
                     .font(.system(.headline, design: .rounded))
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.gray)
                 
                 Divider()
                 
@@ -42,9 +42,11 @@ struct RecipeView: View {
                         .padding(.top, 4)
                 }
             }
+            .padding(.vertical, 80)
+            .padding()
         }
-        .padding()
-        .navigationBarHidden(true)
+        .ignoresSafeArea(edges: .all)
+        .navigationBarHidden(false)
     }
 }
 

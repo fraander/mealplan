@@ -24,7 +24,7 @@ struct Welcome_Goals: View {
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0)
-                .fill(Color(red: 0.839, green: 0.863, blue: 0.863, opacity: 1.000))
+                .fill(Color.welcomePageBackground)
             
             ScrollView {
                 VStack(spacing: 16) {
@@ -49,7 +49,7 @@ struct Welcome_Goals: View {
                             .font(.system(.headline, design: .rounded))
                     }
                     .buttonStyle(.borderedProminent)
-                    .tint(Color(red: 0.639, green: 0.702, blue: 0.400, opacity: 1.000))
+                    .tint(Color.welcomePageAccent)
                     .disabled(preventNextPage)
                     
                 }

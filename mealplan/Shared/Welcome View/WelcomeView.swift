@@ -17,7 +17,7 @@ struct WelcomeView: View {
     
     var body: some View {
         ZStack {
-            Color(red: 0.275, green: 0.455, blue: 0.380, opacity: 1.000)
+            Color.welcomeViewBackground
                 .ignoresSafeArea(.all)
             
             TabView(selection: $page) {

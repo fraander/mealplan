@@ -14,11 +14,17 @@ struct DashboardView: View {
         
     var body: some View {
         ZStack {
-            Color(red: 0.839, green: 0.863, blue: 0.863, opacity: 1.000)
-                .ignoresSafeArea(.all)
+            Color.welcomePageBackground                .ignoresSafeArea(.all)
             
             VStack {
-                HStack {
+                HStack(alignment: .top) {
+                    Text("This Week's Recipes")
+                        .bold()
+                        .font(.system(.largeTitle, design: .rounded))
+                        .foregroundColor(Color.welcomeViewBackground)
+                        .padding(.horizontal)
+                        .padding(.top, 40)
+                    
                     Spacer()
                     
                     Button {
@@ -30,20 +36,11 @@ struct DashboardView: View {
                             .padding(10)
                             .background {
                                 Circle()
-                                    .fill(Color(red: 0.475, green: 0.655, blue: 0.580, opacity: 1.000))
+                                    .fill(Color.filterViewBackground)
                             }
                             .padding(.horizontal)
-                    }
+                    } // gear button
                     
-                } // gear icon
-                
-                HStack {
-                    Text("Week's Recipes")
-                        .bold()
-                        .font(.system(.largeTitle, design: .rounded))
-                        .foregroundColor(Color(red: 0.275, green: 0.455, blue: 0.380, opacity: 1.000))
-                        .padding(.horizontal)
-                    Spacer()
                 } // header
                 
                 List(Recipes.recipes) { recipe in
@@ -55,14 +52,14 @@ struct DashboardView: View {
                                 .font(.system(.body, design: .rounded))
                             Text(recipe.allergen.title)
                                 .font(.system(.caption, design: .rounded))
-                                .foregroundColor(.secondary)
+                                .foregroundColor(.gray)
                         }
                     }
                 }
             }
             .sheet(isPresented: $showFilterView) {
                 ZStack {
-                    Color(red: 0.475, green: 0.655, blue: 0.580, opacity: 1.000)
+                    Color.filterViewBackground
                         .ignoresSafeArea(.all)
                     
                     VStack {
@@ -71,9 +68,9 @@ struct DashboardView: View {
                                 .bold()
                         }
                         .font(.system(.largeTitle, design: .rounded))
-                        .foregroundColor(Color(red: 0.939, green: 0.963, blue: 0.963, opacity: 1.000))
+                        .foregroundColor(Color.defaultTextColor)
                         .padding()
-                        .background(Color(red: 0.475, green: 0.655, blue: 0.580, opacity: 1.000))
+                        .background(Color.filterViewBackground)
                         
                         FilterView(selectedItems: filterItems)
                         
@@ -82,7 +79,7 @@ struct DashboardView: View {
                         }
                         .font(Font.title3.weight(.bold))
                         .buttonStyle(.borderedProminent)
-                        .tint(Color(red: 0.575, green: 0.755, blue: 0.680, opacity: 1.000))
+                        .tint(Color.selectionBackgroundColor)
                         
                         Spacer()
                     }
