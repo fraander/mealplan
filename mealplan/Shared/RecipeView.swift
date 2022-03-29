@@ -11,22 +11,6 @@ struct RecipeView: View {
     
     let recipe: Recipe
     
-    var ingredients: AttributedString {
-        do {
-            return try AttributedString(markdown: recipe.ingredients)
-        } catch {
-            return "failed"
-        }
-    }
-    
-    var procedure: AttributedString {
-        do {
-            return try AttributedString(markdown: recipe.procedure)
-        } catch {
-            return "failed"
-        }
-    }
-    
     var body: some View {
         ScrollView(.vertical) {
             VStack(alignment: .leading) {
@@ -42,8 +26,9 @@ struct RecipeView: View {
                 Text("Ingredients")
                     .font(.system(.title2, design: .rounded))
                     .fontWeight(.semibold)
-                ScrollView {
-                    Text(ingredients)
+                ForEach(recipe.ingredients) { ingredient in
+                    ingredient.getText()
+                        .padding(.top, 4)
                 }
                 
                 Divider()
@@ -51,12 +36,15 @@ struct RecipeView: View {
                 Text("Procedure")
                     .font(.system(.title2, design: .rounded))
                     .fontWeight(.semibold)
-                ScrollView {
-                    Text(procedure)
+                
+                ForEach(recipe.procedure, id: \.self) {step in
+                    Text(step)
+                        .padding(.top, 4)
                 }
             }
         }
         .padding()
+        .navigationBarHidden(true)
     }
 }
 
