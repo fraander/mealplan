@@ -11,10 +11,11 @@ struct DashboardView: View {
     
     @State var showFilterView = false
     @State var filterItems = Set<FilterOption>()
-        
+    
     var body: some View {
         ZStack {
-            Color.welcomePageBackground                .ignoresSafeArea(.all)
+            Color.welcomePageBackground
+                .ignoresSafeArea(.all)
             
             VStack {
                 HStack(alignment: .top) {
@@ -43,19 +44,24 @@ struct DashboardView: View {
                     
                 } // header
                 
-                List(Recipes.recipes) { recipe in
-                    NavigationLink {
-                        RecipeView(recipe: recipe)
-                    } label: {
-                        VStack(alignment: .leading) {
-                            Text(recipe.title)
-                                .font(.system(.body, design: .rounded))
-                            Text(recipe.allergen.title)
-                                .font(.system(.caption, design: .rounded))
-                                .foregroundColor(.gray)
+                List([MealTime.breakfast, MealTime.lunch, MealTime.dinner], id: \.self) { time in
+                    Section("\(time)") {
+                        ForEach(Recipes.recipes.filter({ $0.meal_time == time })) { recipe in
+                            NavigationLink {
+                                RecipeView(recipe: recipe)
+                            } label: {
+                                VStack(alignment: .leading) {
+                                    Text(recipe.title)
+                                        .font(.system(.body, design: .rounded))
+                                    Text(recipe.allergen.title)
+                                        .font(.system(.caption, design: .rounded))
+                                        .foregroundColor(.gray)
+                                }
+                            }
                         }
                     }
                 }
+                .listStyle(.plain)
             }
             .sheet(isPresented: $showFilterView) {
                 ZStack {
@@ -85,7 +91,7 @@ struct DashboardView: View {
                     }
                 }
             }
-
+            
         }
     }
 }
