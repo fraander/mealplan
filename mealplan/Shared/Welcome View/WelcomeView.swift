@@ -14,6 +14,7 @@ enum WelcomePage {
 struct WelcomeView: View {
     
     @Binding var page: WelcomePage
+    @Binding var filters: Set<FilterOption>
     
     var body: some View {
         ZStack {
@@ -30,7 +31,7 @@ struct WelcomeView: View {
                 Welcome_Body(currentPage: $page)
                     .tag(WelcomePage.body)
                 
-                Welcome_Allergens(currentPage: $page)
+                Welcome_Allergens(currentPage: $page, filters: $filters)
                     .tag(WelcomePage.allergens)
                
                 Welcome_Goals(currentPage: $page)
@@ -51,6 +52,6 @@ struct WelcomeView: View {
 
 struct WelcomeView_Previews: PreviewProvider {
     static var previews: some View {
-        WelcomeView(page: .constant(.account))
+        WelcomeView(page: .constant(.account), filters: .constant(Set()))
     }
 }

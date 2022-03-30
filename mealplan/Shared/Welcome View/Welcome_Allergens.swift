@@ -21,6 +21,8 @@ struct Welcome_Allergens: View {
         return false
     }
     
+    @Binding var filters: Set<FilterOption>
+    
     var body: some View {
         ZStack {
             RoundedRectangle(cornerRadius: 10.0)
@@ -37,7 +39,7 @@ struct Welcome_Allergens: View {
                     Text("Dietary Restrictions")
                         .font(.system(.headline, design: .rounded))
                     
-                    FilterView(defaultTextColor: .black, selectionBackgroundColor: Color.welcomePageAccent)
+                    FilterView(defaultTextColor: .black, selectionBackgroundColor: Color.welcomePageAccent, selectedItems: $filters)
                     
                     Button {
                         withAnimation {
@@ -64,6 +66,6 @@ struct Welcome_Allergens: View {
 
 struct Welcome_Allergens_Previews: PreviewProvider {
     static var previews: some View {
-        Welcome_Allergens(currentPage: .constant(.allergens))
+        Welcome_Allergens(currentPage: .constant(.allergens), filters: .constant(Set()))
     }
 }

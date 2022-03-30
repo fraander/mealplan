@@ -10,7 +10,7 @@ import SwiftUI
 struct DashboardView: View {
     
     @State var showFilterView = false
-    @State var filterItems = Set<FilterOption>()
+    @Binding var filterItems: Set<FilterOption>
     
     var body: some View {
         ZStack {
@@ -44,60 +44,68 @@ struct DashboardView: View {
                     
                 } // header
                 
-                List([MealTime.breakfast, MealTime.lunch, MealTime.dinner], id: \.self) { time in
-                    Section("\(time)") {
-                        ForEach(Recipes.recipes.filter({ $0.meal_time == time })) { recipe in
-                            NavigationLink {
-                                RecipeView(recipe: recipe)
-                            } label: {
-                                VStack(alignment: .leading) {
-                                    Text(recipe.title)
-                                        .font(.system(.body, design: .rounded))
-                                    Text(recipe.allergen.title)
-                                        .font(.system(.caption, design: .rounded))
-                                        .foregroundColor(.gray)
+                if Recipes.recipes.filter({ filterItems.contains($0.allergen) }).count > 0 {
+                    List([MealTime.breakfast, MealTime.lunch, MealTime.dinner], id: \.self) { time in
+                        Section("\(time)") {
+                            ForEach(Recipes.recipes.filter({ $0.meal_time == time && filterItems.contains($0.allergen) })) { recipe in
+                                NavigationLink {
+                                    RecipeView(recipe: recipe)
+                                } label: {
+                                    VStack(alignment: .leading) {
+                                        Text(recipe.title)
+                                            .font(.system(.body, design: .rounded))
+                                        Text(recipe.allergen.title)
+                                            .font(.system(.caption, design: .rounded))
+                                            .foregroundColor(.gray)
+                                    }
                                 }
                             }
                         }
                     }
-                }
-                .listStyle(.plain)
-            }
-            .sheet(isPresented: $showFilterView) {
-                ZStack {
-                    Color.filterViewBackground
-                        .ignoresSafeArea(.all)
-                    
-                    VStack {
-                        HStack {
-                            Text("Filters")
-                                .bold()
-                        }
-                        .font(.system(.largeTitle, design: .rounded))
-                        .foregroundColor(Color.defaultTextColor)
-                        .padding()
-                        .background(Color.filterViewBackground)
-                        
-                        FilterView(selectedItems: filterItems)
-                        
-                        Button("Done") {
-                            showFilterView = false
-                        }
-                        .font(Font.title3.weight(.bold))
-                        .buttonStyle(.borderedProminent)
-                        .tint(Color.selectionBackgroundColor)
-                        
-                        Spacer()
-                    }
+                    .listStyle(.plain)
+                } else {
+                    Spacer()
+                    Text("Adjust the filters to find some recipes")
+                        .foregroundColor(Color.black)
+                        .font(.system(.title3, design: .rounded))
+                    Spacer()
                 }
             }
-            
         }
+        .sheet(isPresented: $showFilterView) {
+            ZStack {
+                Color.filterViewBackground
+                    .ignoresSafeArea(.all)
+                
+                VStack {
+                    HStack {
+                        Text("Filters")
+                            .bold()
+                    }
+                    .font(.system(.largeTitle, design: .rounded))
+                    .foregroundColor(Color.defaultTextColor)
+                    .padding()
+                    .background(Color.filterViewBackground)
+                    
+                    FilterView(selectedItems: $filterItems)
+                    
+                    Button("Done") {
+                        showFilterView = false
+                    }
+                    .font(Font.title3.weight(.bold))
+                    .buttonStyle(.borderedProminent)
+                    .tint(Color.selectionBackgroundColor)
+                    
+                    Spacer()
+                }
+            }
+        }
+        
     }
 }
 
 struct DashboardView_Previews: PreviewProvider {
     static var previews: some View {
-        DashboardView()
+        DashboardView(filterItems: .constant(Set()))
     }
 }

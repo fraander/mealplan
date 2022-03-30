@@ -14,7 +14,7 @@ struct FilterView: View {
     var selectionTextColor = Color.selectionTextColor
     var selectionBackgroundColor = Color.selectionBackgroundColor
     
-    @State var selectedItems = Set<FilterOption>()
+    @Binding var selectedItems: Set<FilterOption>
     
     var body: some View{
         ScrollView(.vertical) {
@@ -70,7 +70,7 @@ struct FilterView_Previews: PreviewProvider {
                 
                 
                 
-                FilterView()
+                FilterView(selectedItems: .constant(Set()))
             }
         }
     }

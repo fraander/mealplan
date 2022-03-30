@@ -13,15 +13,16 @@ import SwiftUI
 struct mealplanApp: App {
     
     @State private var page: WelcomePage = .account
+    @State private var filters = Set<FilterOption>()
     
     var body: some Scene {
         WindowGroup {
             NavigationView {
                 Group {
                     if page != .dashboard {
-                        WelcomeView(page: $page)
+                        WelcomeView(page: $page, filters: $filters)
                     } else {
-                        DashboardView()
+                        DashboardView(filterItems: $filters)
                     }
                 }
                 .navigationBarHidden(true)
