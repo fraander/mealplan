@@ -32,8 +32,7 @@ struct DashboardView: View {
                         Text("This Week's Recipes")
                             .bold()
                             .font(.system(.largeTitle, design: .rounded))
-                            .foregroundColor(Color.welcomeViewBackground)
-                        
+                                                    
                         HStack {
                             Text("Day")
                                 .font(.system(.caption, design: .rounded))
@@ -47,6 +46,7 @@ struct DashboardView: View {
                             Spacer()
                         }
                     }
+                    .foregroundColor(Color.welcomeViewBackground)
                     .padding(.horizontal)
                     
                     Spacer()
@@ -126,8 +126,8 @@ struct DashboardView: View {
     }
 }
 
-//struct DashboardView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        DashboardView(filterItems: .constant(Set()), is_day: true)
-//    }
-//}
+struct DashboardView_Previews: PreviewProvider {
+    static var previews: some View {
+        DashboardView(filterItems: .constant(Set()), is_day: true)
+    }
+}
