@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+enum ViewType {
+    case day_of_week, meal_time
+}
+
 struct DashboardView: View {
     
     @State var showFilterView = false
     @Binding var filterItems: Set<FilterOption>
+
+    @State var is_day = false
+    var view_type: ViewType {
+        return is_day == true ? .day_of_week : .meal_time
+    }
     
     var body: some View {
         ZStack {
@@ -19,12 +28,26 @@ struct DashboardView: View {
             
             VStack {
                 HStack(alignment: .top) {
-                    Text("This Week's Recipes")
-                        .bold()
-                        .font(.system(.largeTitle, design: .rounded))
-                        .foregroundColor(Color.welcomeViewBackground)
-                        .padding(.horizontal)
-                        .padding(.top, 40)
+                    VStack(alignment: .leading) {
+                        Text("This Week's Recipes")
+                            .bold()
+                            .font(.system(.largeTitle, design: .rounded))
+                            .foregroundColor(Color.welcomeViewBackground)
+                        
+                        HStack {
+                            Text("Day")
+                                .font(.system(.caption, design: .rounded))
+                                .bold()
+                            Toggle("", isOn: $is_day)
+                                .tint(Color.welcomeViewBackground)
+                                .labelsHidden()
+                            Text("Time")
+                                .font(.system(.caption, design: .rounded))
+                                .bold()
+                            Spacer()
+                        }
+                    }
+                    .padding(.horizontal)
                     
                     Spacer()
                     
@@ -45,24 +68,23 @@ struct DashboardView: View {
                 } // header
                 
                 if Recipes.recipes.filter({ filterItems.contains($0.allergen) }).count > 0 {
-                    List([MealTime.breakfast, MealTime.lunch, MealTime.dinner], id: \.self) { time in
-                        Section("\(time)") {
-                            ForEach(Recipes.recipes.filter({ $0.meal_time == time && filterItems.contains($0.allergen) })) { recipe in
-                                NavigationLink {
-                                    RecipeView(recipe: recipe)
-                                } label: {
-                                    VStack(alignment: .leading) {
-                                        Text(recipe.title)
-                                            .font(.system(.body, design: .rounded))
-                                        Text(recipe.allergen.title)
-                                            .font(.system(.caption, design: .rounded))
-                                            .foregroundColor(.gray)
-                                    }
+                    if view_type == .day_of_week {
+                        List(DayOfWeek.allCases, id: \.self) { day in
+                            Section("\(day)") {
+                                ForEach(Recipes.recipes.filter({ $0.day_of_week == day && filterItems.contains($0.allergen) })) { recipe in
+                                    RecipeListItem(recipe: recipe)
+                                }
+                            }
+                        }
+                    } else if view_type == .meal_time {
+                        List(MealTime.allCases, id: \.self) { time in
+                            Section("\(time)") {
+                                ForEach(Recipes.recipes.filter({ $0.meal_time == time && filterItems.contains($0.allergen) })) { recipe in
+                                    RecipeListItem(recipe: recipe)
                                 }
                             }
                         }
                     }
-                    .listStyle(.plain)
                 } else {
                     Spacer()
                     Text("Adjust the filters to find some recipes")
@@ -100,12 +122,12 @@ struct DashboardView: View {
                 }
             }
         }
-        
+        .accentColor(.welcomeViewBackground)
     }
 }
 
-struct DashboardView_Previews: PreviewProvider {
-    static var previews: some View {
-        DashboardView(filterItems: .constant(Set()))
-    }
-}
+//struct DashboardView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        DashboardView(filterItems: .constant(Set()), is_day: true)
+//    }
+//}

@@ -39,6 +39,7 @@ struct WelcomeView: View {
             }
             .tabViewStyle(.page(indexDisplayMode: page != .allergens ? .always : .never))
             .padding(.bottom)
+            .accentColor(Color.welcomePageAccent)
             
             // TODO: Full field validation
             // TODO: Tint color on pickers (date, menu)

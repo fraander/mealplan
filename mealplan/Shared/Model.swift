@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 
-enum MealTime: CustomStringConvertible {
+enum MealTime: CustomStringConvertible, CaseIterable {
     case breakfast, lunch, dinner
     
     var description: String {
@@ -19,6 +19,29 @@ enum MealTime: CustomStringConvertible {
                 return "Lunch"
             case .dinner:
                 return "Dinner"
+        }
+    }
+}
+
+enum DayOfWeek: CustomStringConvertible, CaseIterable {
+    case monday, tuesday, wednesday, thursday, friday //, saturday, sunday
+    
+    var description: String {
+        switch self {
+            case .monday:
+                return "Monday"
+            case .tuesday:
+                return "Tuesday"
+            case .wednesday:
+                return "Wednesday"
+            case .thursday:
+                return "Thursday"
+            case .friday:
+                return "Friday"
+//            case .saturday:
+//                return "Saturday"
+//            case .sunday:
+//                return "Sunday"
         }
     }
 }
@@ -51,9 +74,10 @@ struct FilterOption: Identifiable, Hashable {
     var chosen = false
 }
 
-struct Recipe: Identifiable {
+struct Recipe: Identifiable {    
     var id = UUID()
     var title: String
+    var day_of_week: DayOfWeek
     var meal_time: MealTime
     var allergen: FilterOption
     
@@ -83,7 +107,7 @@ struct RecipeItem: Identifiable {
 struct Recipes {
     static let recipes = [
         Recipe(title: "Spiced Oatmeal Fritters with Coconut Caramel Pears",
-               meal_time: .breakfast,
+               day_of_week: .monday, meal_time: .breakfast,
                allergen: FilterOption.gluten_free,
                procedure: [
                 "1. In a large saucepan, combine the almond milk, cloves, nutmeg and 3 tsp of the cinnamon. Bring to a simmer. Tip in the oats and cook for 6 mins over a low heat, stirring constantly, until thick and creamy, like porridge. Scrape into a mixing bowl, cover, and cool for 20 mins.",
@@ -107,7 +131,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Gluten Free French Toast",
-               meal_time: .breakfast,
+               day_of_week: .tuesday, meal_time: .breakfast,
                allergen: FilterOption.gluten_free,
                procedure: [
                 "1. In a shallow bowl, combine the eggs, milk or dairy substitute, sugar, salt, and vanilla, and whisk until thoroughly blended.",
@@ -127,7 +151,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Jumbo Lemon Poppyseed Zucchini Muffins",
-               meal_time: .breakfast,
+               day_of_week: .wednesday, meal_time: .breakfast,
                allergen: .gluten_free,
                procedure: [
                 "Preheat oven to 400F.",
@@ -157,7 +181,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Apple Ring Donuts",
-               meal_time: .breakfast,
+               day_of_week: .thursday, meal_time: .breakfast,
                allergen: .gluten_free,
                procedure: [
                 "1. Preheat the oven to 350F. Coat a donut pan liberally with cooking spray and set aside.",
@@ -186,7 +210,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Low-Carb Breakfast Wraps",
-               meal_time: .breakfast,
+               day_of_week: .friday, meal_time: .breakfast,
                allergen: .gluten_free,
                procedure: [
                 "1. In a large bowl, whisk together eggs and milk. Season with salt and pepper.",
@@ -210,7 +234,7 @@ struct Recipes {
               ),
         
         Recipe(title: "Spicy chicken & avocado wraps",
-               meal_time: .lunch,
+               day_of_week: .monday, meal_time: .lunch,
                allergen: .gluten_free,
                procedure: [
                 "1. Mix the chicken with the lime juice, chilli powder and garlic.",
@@ -229,7 +253,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Mediterranean Tuna Salad",
-               meal_time: .lunch,
+               day_of_week: .tuesday, meal_time: .lunch,
                allergen: .gluten_free,
                procedure: [
                 "All you have to do for this recipe: flake the tuna, chop the veggies, and mix it together!"
@@ -248,7 +272,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Cottage Cheese Breakfast Bowls",
-               meal_time: .lunch,
+               day_of_week: .wednesday, meal_time: .lunch,
                allergen: .gluten_free,
                procedure: [
                 "Add ¾ cup cottage cheese to a bowl. Top with berries or diced apple.",
@@ -261,7 +285,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Simplest Salmon Bowl",
-               meal_time: .lunch,
+               day_of_week: .thursday, meal_time: .lunch,
                allergen: .gluten_free,
                procedure: [
                 "Make the rice: Start the rice (go to How to Make Rice or Instant Pot Rice).",
@@ -282,7 +306,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Vegitarian Tortilla Soup",
-               meal_time: .lunch,
+               day_of_week: .friday, meal_time: .lunch,
                allergen: .gluten_free,
                procedure: [
                 "Heat oven to 375°F.",
@@ -317,7 +341,7 @@ struct Recipes {
               ),
         
         Recipe(title: "Zucchini Lasagna",
-               meal_time: .dinner,
+               day_of_week: .monday, meal_time: .dinner,
                allergen: .gluten_free,
                procedure: [
                 "First, preheat the oven to 375°F. Then, season the pork chops well with salt and pepper. The amount of salt and pepper depends on your taste. Prepare the butter sauce by melting four tablespoons of butter in the microwave or stove. Once it’s melted, add the chopped thyme and garlic. Stir well, and set aside. In a cast iron skillet, heat the olive oil over medium heat, and when the skillet is really hot, add the pork chops, and sear them until they have a nice golden brown look, about 4 minutes per side.",
@@ -336,7 +360,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Garlic Butter Baked Pork Chops",
-               meal_time: .dinner,
+               day_of_week: .tuesday, meal_time: .dinner,
                allergen: .gluten_free,
                procedure: [
                 "First, preheat the oven to 375°F.",
@@ -352,7 +376,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Cheesy Chicken Enchilada Casserole",
-               meal_time: .dinner,
+               day_of_week: .wednesday, meal_time: .dinner,
                allergen: .gluten_free,
                procedure: [
                 "1. Heat oven to 375°F. Grease 13x9-inch (3-quart) baking dish. In medium bowl, mix chicken, tomatoes, beans, jalapeño chile, spices and 1 cup of the soup.",
@@ -373,7 +397,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Chili Beef Pasta",
-               meal_time: .dinner,
+               day_of_week: .thursday, meal_time: .dinner,
                allergen: .gluten_free,
                procedure: [
                 "In a Dutch oven, cook beef over medium heat 6-8 minutes or until no longer pink, breaking into crumbles; drain. Stir in seasonings.",
@@ -395,7 +419,7 @@ struct Recipes {
                ]
               ),
         Recipe(title: "Pizza Prep",
-               meal_time: .dinner,
+               day_of_week: .friday, meal_time: .dinner,
                allergen: .gluten_free,
                procedure: [
                 "1. Heat oven to 425°F. Grease 12-inch pizza pan. Stir Bisquick mix, Italian seasoning, water, oil and eggs until well combined; spread in pan.",

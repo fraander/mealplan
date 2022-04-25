@@ -43,7 +43,8 @@ struct Welcome_Allergens: View {
                     
                     Button {
                         withAnimation {
-                            currentPage = .goals
+//                            currentPage = .goals
+                            currentPage = .dashboard
                         }
                     } label: {
                         Text("Next Page")
