@@ -42,11 +42,7 @@ struct WelcomeView: View {
             .accentColor(Color.welcomePageAccent)
             
             // TODO: Full field validation
-            // TODO: Tint color on pickers (date, menu)
             // TODO: handle keyboard
-            // TODO: Refactor
-            // TODO: Goals to pick from
-            // TODO: Success page (confetti?)
         }
     }
 }

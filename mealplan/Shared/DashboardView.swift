@@ -28,7 +28,7 @@ struct DashboardView: View {
             
             VStack {
                 HStack(alignment: .top) {
-                    VStack(alignment: .leading) {
+                    VStack(alignment: .leading, spacing: 10) {
                         Text("This Week's Recipes")
                             .bold()
                             .font(.system(.largeTitle, design: .rounded))
