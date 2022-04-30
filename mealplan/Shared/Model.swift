@@ -48,15 +48,15 @@ enum DayOfWeek: CustomStringConvertible, CaseIterable {
 
 struct FilterOption: Identifiable, Hashable {
     static let options = [
-//        nut_free,
-        gluten_free//,
-//        vegetarian,
-//        vegan,
-//        pescatarian,
-//        shellfish_free,
-//        kosher,
-//        halal,
-//        lactose_free
+        nut_free,
+        gluten_free,
+        vegetarian,
+        vegan,
+        pescatarian,
+        shellfish_free,
+        kosher,
+        halal,
+        lactose_free
     ]
     
     static let nut_free = FilterOption(title: "Nut Free")
